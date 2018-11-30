@@ -17,7 +17,8 @@ def input_from(path_to_look):
     name_list=[]
     folder_list=os.listdir(path_to_look)
     i=0
-    for folder in folder_list:
+    for num_person,folder in enumerate(folder_list):
+        print(num_person)
         files_path = path_to_look + "/"+folder
         image_list = os.listdir(files_path)
         X = []
