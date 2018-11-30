@@ -19,10 +19,10 @@ sh = wb.sheet_by_name(u'Feuil2')
 for Nrow in range(1,500):
     if sh.row_values(Nrow,1,2)[0]>=treshold:
         name=sh.row_values(Nrow,0,1)[0]
-        try
+        try:
             os.makedirs(dest+name)
         except:
-            "files already created"
+            print("files already created")
         for i in range (1,number_of_pict+1):
             try:
                 copy(src+"/"+name+"/"+name+"_"+str(i).zfill(4)+".jpg", dest+name)

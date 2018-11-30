@@ -1,10 +1,9 @@
 import os
+from face_detection import reshape
 import cv2
 import numpy
 
-def reshape():
-    array=[]
-    return array
+
 
 def input_from(path_to_look):
     split_train = 0.6
@@ -17,21 +16,28 @@ def input_from(path_to_look):
     y_test = []
     name_list=[]
     folder_list=os.listdir(path_to_look)
+    i=0
     for folder in folder_list:
         files_path = path_to_look + "/"+folder
         image_list = os.listdir(files_path)
         X = []
         y = []
         name_list.append(folder)
-        for image_path in image_list:
-            image = cv2.imread(path_to_look + "/"+folder+"/"+image_path)
+        for image_name in image_list:
+            image_path=path_to_look + "/"+folder+"/"+image_name
 
             #if we want to reshape the pict to only keep the face
-            #gray = reshape(image)
+            gray,img= reshape(image_path)
+            # if(i<10):
+            #     cv2.imshow('img', img)
+            #     cv2.waitKey(0)
+            #     cv2.destroyAllWindows()
+            #     i+=1
 
             #if we just want to use the picture as grey level array
-            gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-            gray = numpy.array(gray)
+            #image = cv2.imread(image_path)
+            #gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            #gray = numpy.array(gray)
 
 
             X.append(gray)
@@ -48,12 +54,17 @@ def input_from(path_to_look):
 
 files_path=os.path.dirname(__file__)+"\\few_pict_for_test"
 (X_train, y_train), (X_val, y_val), (X_test, y_test),name_list=input_from(files_path)
-print(X_train[2][150][150])
-print(y_train)
 print(name_list)
 
 (train_images, train_labels),(test_images,test_labels) =(X_train, y_train), (X_test, y_test)
-
+print(train_images)
+print(len(train_images))
+max=(0,0)
+for i in range (len(train_images)):
+    print(train_images[i].shape)
+    if(train_images[i].shape>max):
+        max=train_images[i].shape
+print(max)
 
 
 
