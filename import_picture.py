@@ -42,7 +42,9 @@ def input_from(path_to_look):
 
 
             X.append(gray)
-            y.append(len(name_list))
+            label=numpy.zeros(len(folder_list))
+            label[num_person]=1;
+            y.append(label)
         X_train.extend(X[:int(split_train * len(X))])
         X_val.extend(X[int(split_train * len(X)):int(split_val * len(X))])
         X_test.extend(X[int(split_val * len(X)):])
