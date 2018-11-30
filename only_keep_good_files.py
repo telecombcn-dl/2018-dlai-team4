@@ -5,6 +5,10 @@ from shutil import copy
 treshold=20
 number_of_pict=treshold
 
+#database http://vis-www.cs.umass.edu/lfw/
+#Labeled Faces in the Wild (LFW)
+#13.000 images of faces collected from the web,
+#1.680 of the people pictured have two or more
 src=os.path.dirname(__file__)+"\\all_pict"
 dest=os.path.dirname(__file__)+"\\filtered_pict_"+str(treshold)+"\\"
 wb = xlrd.open_workbook('ordered_name.xlsx')
@@ -15,7 +19,7 @@ sh = wb.sheet_by_name(u'Feuil2')
 for Nrow in range(1,500):
     if sh.row_values(Nrow,1,2)[0]>=treshold:
         name=sh.row_values(Nrow,0,1)[0]
-        try:
+        try
             os.makedirs(dest+name)
         except:
             "files already created"
