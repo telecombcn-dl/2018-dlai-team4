@@ -52,8 +52,8 @@ def input_from(path_to_look):
 
 
 
-files_path=os.path.dirname(__file__)+"\\filtered_pict_20"
-(X_train, y_train), (X_val, y_val), (X_test, y_test),name_list=input_from(files_path)
+# files_path=os.path.dirname(__file__)+"\\filtered_pict_20"
+# (X_train, y_train), (X_val, y_val), (X_test, y_test),name_list=input_from(files_path)
 #print(name_list)
 
 #print(train_images)
