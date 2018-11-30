@@ -52,19 +52,19 @@ def input_from(path_to_look):
 
 
 
-files_path=os.path.dirname(__file__)+"\\few_pict_for_test"
+files_path=os.path.dirname(__file__)+"\\filtered_pict_20"
 (X_train, y_train), (X_val, y_val), (X_test, y_test),name_list=input_from(files_path)
-print(name_list)
+#print(name_list)
 
 (train_images, train_labels),(test_images,test_labels) =(X_train, y_train), (X_test, y_test)
-print(train_images)
-print(len(train_images))
-max=(0,0)
-for i in range (len(train_images)):
-    print(train_images[i].shape)
-    if(train_images[i].shape>max):
-        max=train_images[i].shape
-print(max)
+#print(train_images)
+#print(len(train_images))
+# max=(0,0)
+# for i in range (len(train_images)):
+#     print(train_images[i].shape)
+#     if(train_images[i].shape>max):
+#         max=train_images[i].shape
+# print(max)
 
 
 
