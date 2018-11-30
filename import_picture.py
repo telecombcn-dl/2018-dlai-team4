@@ -4,8 +4,8 @@ import cv2
 import numpy
 
 
-
 def input_from(path_to_look):
+    path_to_look=os.path.dirname(__file__) +"/"+path_to_look
     split_train = 0.6
     split_val= split_train + 0.2
     X_train = []
@@ -56,7 +56,6 @@ files_path=os.path.dirname(__file__)+"\\filtered_pict_20"
 (X_train, y_train), (X_val, y_val), (X_test, y_test),name_list=input_from(files_path)
 #print(name_list)
 
-(train_images, train_labels),(test_images,test_labels) =(X_train, y_train), (X_test, y_test)
 #print(train_images)
 #print(len(train_images))
 # max=(0,0)
