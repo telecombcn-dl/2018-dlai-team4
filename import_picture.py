@@ -5,7 +5,7 @@ import numpy
 
 
 def input_from(path_to_look):
-    path_to_look=os.path.dirname(__file__) +"/"+path_to_look
+    #path_to_look=os.path.dirname(__file__) +"/"+path_to_look
     split_train = 0.6
     split_val= split_train + 0.2
     X_train = []
