@@ -18,7 +18,7 @@ def import_processed_pict_from(path_to_look):
     folder_list=os.listdir(path_to_look)
     i=0
     for num_person,folder in enumerate(folder_list):
-        print(num_person)
+        print(num_person + " : " +folder )
         files_path = path_to_look + "/"+folder
         image_list = os.listdir(files_path)
         X = []
