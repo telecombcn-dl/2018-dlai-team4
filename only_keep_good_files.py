@@ -9,8 +9,8 @@ def create_new_parse(treshold):
     #Labeled Faces in the Wild (LFW)
     #13.000 images of faces collected from the web,
     #1.680 of the people pictured have two or more
-    src=os.path.dirname(__file__)+"\\all_pict"
-    dest=os.path.dirname(__file__)+"\\filtered_pict_"+str(treshold)+"\\"
+    src=os.getcwd()+"\\all_pict"
+    dest=os.getcwd()+"\\filtered_pict_"+str(treshold)+"\\"
     wb = xlrd.open_workbook('ordered_name.xlsx')
 
     sh = wb.sheet_by_name(u'Feuil2')
