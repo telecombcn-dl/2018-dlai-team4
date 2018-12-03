@@ -2,6 +2,7 @@ import os
 from face_detection import reshape
 import cv2
 import numpy
+from keras.utils import to_categorical
 
 
 def import_processed_pict_from(path_to_look,size):
@@ -42,8 +43,9 @@ def import_processed_pict_from(path_to_look,size):
             #gray = numpy.array(gray)
 
 
-            X.append(gray)
-            label=num_person
+            X.append(numpy.asarray(gray))
+            label=num_person#Converts a class vector (integers) to binary class matrix
+            label = to_categorical(label)
             #label=numpy.zeros(len(folder_list))
             #label[num_person]=1;
             y.append(label)
