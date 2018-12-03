@@ -1,10 +1,10 @@
 import os
-from face_detection import reshape
+from . import face_detection as fc
 import cv2
 import numpy
 
 
-def import_processed_pict_from(path_to_look):
+def import_processed_pict_from(path_to_look,size):
     #path_to_look=os.path.dirname(__file__) +"/"+path_to_look
     split_train = 0.6
     split_val= split_train + 0.2
@@ -28,7 +28,7 @@ def import_processed_pict_from(path_to_look):
             image_path=path_to_look + "/"+folder+"/"+image_name
 
             #if we want to reshape the pict to only keep the face
-            gray,img= reshape(image_path)
+            gray,img= fc.reshape(image_path,size)
             # if(i<10):
             #     cv2.imshow('img', img)
             #     cv2.waitKey(0)
@@ -55,8 +55,8 @@ def import_processed_pict_from(path_to_look):
 
 
 
-# files_path=os.path.dirname(__file__)+"\\filtered_pict_20"
-# (X_train, y_train), (X_val, y_val), (X_test, y_test),name_list=input_from(files_path)
+#files_path=os.path.dirname(__file__)+"\\filtered_pict_20"
+#(X_train, y_train), (X_val, y_val), (X_test, y_test),name_list=import_processed_pict_from(files_path,100)
 #print(name_list)
 
 #print(train_images)

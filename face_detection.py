@@ -9,7 +9,7 @@ import cv2
 #import sys
 import numpy as np
 
-def reshape(path) :
+def reshape(path,size) :
     global roi_gray
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
     #eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
@@ -20,7 +20,7 @@ def reshape(path) :
     faces = face_cascade.detectMultiScale(gray, 1.1, 5)
     for (x,y,w,h) in faces:
         roi_gray = gray[y:y+h, x:x+w]
-        roi_gray=cv2.resize(roi_gray, dsize=(100, 100), interpolation=cv2.INTER_CUBIC)
+        roi_gray=cv2.resize(roi_gray, dsize=(size, size), interpolation=cv2.INTER_CUBIC)
         #roi_color = img[y:y+h, x:x+w]
         # eyes = eye_cascade.detectMultiScale(roi_gray)
         #for (ex,ey,ew,eh) in eyes:
