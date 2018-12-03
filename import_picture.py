@@ -30,6 +30,7 @@ def import_processed_pict_from(path_to_look,size):
 
             #if we want to reshape the pict to only keep the face
             gray,img= reshape(image_path,size)
+            gray=gray.astype('float32')
             gray=gray/255
             # if(i<10):
             #     cv2.imshow('img', img)
