@@ -46,7 +46,7 @@ def import_processed_pict_from(path_to_look,size):
 
             X.append(gray)
             label=num_person#Converts a class vector (integers) to binary class matrix
-            label = to_categorical(label)
+            #label = to_categorical(label)
             #label=numpy.zeros(len(folder_list))
             #label[num_person]=1;
             y.append(label)
