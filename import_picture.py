@@ -1,5 +1,5 @@
 import os
-from . import face_detection as fc
+from face_detection import reshape
 import cv2
 import numpy
 
@@ -28,7 +28,7 @@ def import_processed_pict_from(path_to_look,size):
             image_path=path_to_look + "/"+folder+"/"+image_name
 
             #if we want to reshape the pict to only keep the face
-            gray,img= fc.reshape(image_path,size)
+            gray,img= reshape(image_path,size)
             # if(i<10):
             #     cv2.imshow('img', img)
             #     cv2.waitKey(0)
