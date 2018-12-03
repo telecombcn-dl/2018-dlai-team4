@@ -29,6 +29,6 @@ def reshape(path,size) :
     #cv2.imshow('img',roi_gray)
     #cv2.waitKey(0)
     #cv2.destroyAllWindows()
-    roi_array = np.concatenate(roi_gray)
+    roi_array = roi_gray
     return(roi_array,roi_gray)
 
