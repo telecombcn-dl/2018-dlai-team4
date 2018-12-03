@@ -29,6 +29,7 @@ def import_processed_pict_from(path_to_look,size):
 
             #if we want to reshape the pict to only keep the face
             gray,img= reshape(image_path,size)
+            gray=gray/255
             # if(i<10):
             #     cv2.imshow('img', img)
             #     cv2.waitKey(0)
@@ -42,8 +43,9 @@ def import_processed_pict_from(path_to_look,size):
 
 
             X.append(gray)
-            label=numpy.zeros(len(folder_list))
-            label[num_person]=1;
+            label=num_person
+            #label=numpy.zeros(len(folder_list))
+            #label[num_person]=1;
             y.append(label)
         X_train.extend(X[:int(split_train * len(X))])
         X_val.extend(X[int(split_train * len(X)):int(split_val * len(X))])
