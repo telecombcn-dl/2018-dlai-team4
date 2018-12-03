@@ -9,7 +9,7 @@ def create_new_parse(treshold,number_of_pict):
     #13.000 images of faces collected from the web,
     #1.680 of the people pictured have two or more
     src=os.getcwd()+"/all_pict"
-    dest=os.getcwd()+"/filtered_pict_"+str(treshold)+"/"
+    dest=os.getcwd()+"/filtered_pict_"+str(treshold)+"_"+str(number_of_pict)+"/"
     wb = xlrd.open_workbook('ordered_name.xlsx')
 
     sh = wb.sheet_by_name(u'Feuil2')
