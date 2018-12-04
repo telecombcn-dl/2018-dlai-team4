@@ -25,7 +25,9 @@ def create_new_parse(treshold,number_of_pict):
             for i in range (1,number_of_pict+1):
                 try:
                     copy(src+"/"+name+"/"+name+"_"+str(i).zfill(4)+".jpg", dest+name)
-                except IOError as e:
-                    print("Unable to copy file. %s" % e)
+                #except IOError as e:
+                    #print("Unable to copy file. %s" % e)
                 except:
-                    print("Unexpected error:", sys.exc_info())
+                    #print("Unexpected error:", sys.exc_info())
+                    x=1
+
