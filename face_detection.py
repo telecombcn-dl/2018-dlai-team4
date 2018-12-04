@@ -11,6 +11,7 @@ import numpy as np
 
 def reshape(path,size,RGB) :
     global roi_gray
+    global roi_color
     face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
     #eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
     
