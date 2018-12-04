@@ -2,7 +2,7 @@ import xlrd
 import os
 from shutil import copy
 
-def create_new_parse(treshold,number_of_pict):
+def create_new_parse(treshold,number_of_pict,all_per_person,everyone):
 
     #database http://vis-www.cs.umass.edu/lfw/
     #Labeled Faces in the Wild (LFW)
@@ -14,20 +14,57 @@ def create_new_parse(treshold,number_of_pict):
 
     sh = wb.sheet_by_name(u'Feuil2')
 
-
-    for Nrow in range(1,500):
-        if sh.row_values(Nrow,1,2)[0]>=treshold:
-            name=sh.row_values(Nrow,0,1)[0]
+    if everyone :
+        for Nrow in range(1, 5751):
+            name = sh.row_values(Nrow, 0, 1)[0]
             try:
-                os.makedirs(dest+name)
+                os.makedirs(dest + name)
             except:
                 print("files already created")
-            for i in range (1,number_of_pict+1):
+            if all_per_person:
+                while True:
+                    try:
+                        copy(src + "/" + name + "/" + name + "_" + str(i).zfill(4) + ".jpg", dest + name)
+                    # except IOError as e:
+                    # print("Unable to copy file. %s" % e)
+                    except:
+                        # print("Unexpected error:", sys.exc_info())
+                        break;
+            else:
+                for i in range(1, number_of_pict + 1):
+                    try:
+                        copy(src + "/" + name + "/" + name + "_" + str(i).zfill(4) + ".jpg", dest + name)
+                    # except IOError as e:
+                    # print("Unable to copy file. %s" % e)
+                    except:
+                        # print("Unexpected error:", sys.exc_info())
+                        break;
+    else :
+        for Nrow in range(1,612):
+            if sh.row_values(Nrow,1,2)[0]>=treshold:
+                name=sh.row_values(Nrow,0,1)[0]
                 try:
-                    copy(src+"/"+name+"/"+name+"_"+str(i).zfill(4)+".jpg", dest+name)
-                #except IOError as e:
-                    #print("Unable to copy file. %s" % e)
+                    os.makedirs(dest+name)
                 except:
-                    #print("Unexpected error:", sys.exc_info())
-                    x=1
+                    print("files already created")
+                if all_per_person :
+                    while True :
+                        try:
+                            copy(src + "/" + name + "/" + name + "_" + str(i).zfill(4) + ".jpg", dest + name)
+                        # except IOError as e:
+                        # print("Unable to copy file. %s" % e)
+                        except:
+                            # print("Unexpected error:", sys.exc_info())
+                            break;
+                else :
+                    for i in range (1,number_of_pict+1):
+                        try:
+                            copy(src+"/"+name+"/"+name+"_"+str(i).zfill(4)+".jpg", dest+name)
+                        #except IOError as e:
+                            #print("Unable to copy file. %s" % e)
+                        except:
+                            #print("Unexpected error:", sys.exc_info())
+                            break;
+            else :
+                break
 
