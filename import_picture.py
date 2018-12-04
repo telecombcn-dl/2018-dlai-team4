@@ -5,7 +5,7 @@ import numpy
 from keras.utils import to_categorical
 
 
-def import_processed_pict_from(path_to_look,size):
+def import_processed_pict_from(path_to_look,size,RGB):
     #path_to_look=os.path.dirname(__file__) +"/"+path_to_look
     split_train = 0.6
     split_val= split_train + 0.2
@@ -29,9 +29,9 @@ def import_processed_pict_from(path_to_look,size):
             image_path=path_to_look + "/"+folder+"/"+image_name
 
             #if we want to reshape the pict to only keep the face
-            gray,img= reshape(image_path,size)
-            #gray=gray.astype('float32')
-            gray=gray/255
+            output= reshape(image_path,size,RGB)
+
+            output=output/255
             # if(i<10):
             #     cv2.imshow('img', img)
             #     cv2.waitKey(0)
@@ -44,7 +44,7 @@ def import_processed_pict_from(path_to_look,size):
             #gray = numpy.array(gray)
 
 
-            X.append(gray)
+            X.append(output)
             label=num_person#Converts a class vector (integers) to binary class matrix
             #label = to_categorical(label)
             #label=numpy.zeros(len(folder_list))
