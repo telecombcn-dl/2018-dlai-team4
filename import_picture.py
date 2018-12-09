@@ -1,3 +1,4 @@
+# Related libraries are being called.
 import os
 from face_detection import reshape
 import cv2
@@ -7,31 +8,45 @@ from keras.utils import to_categorical
 
 def import_processed_pict_from(path_to_look,size,RGB):
     #path_to_look=os.path.dirname(__file__) +"/"+path_to_look
+
+    # Arranging percetage of train, validation and test data
     split_train = 0.6
     split_val= split_train + 0.2
+
+    # Creating empty array to put picture with respect to three parts 
     X_train = []
     X_val=[]
     X_test = []
     y_train = []
     y_val=[]
     y_test = []
+
+    
     name_list=[]
     folder_list=os.listdir(path_to_look)
     i=0
+
+    # in the related path, picture read and seperating process.
     for num_person,folder in enumerate(folder_list):
         print(str(num_person) + " : " +folder )
         files_path = path_to_look + "/"+folder
         image_list = os.listdir(files_path)
         X = []
         y = []
+        
+        # the name of file that is renamed as file name in the path is adding array
         name_list.append(folder)
+
+        # the pictures of each person is reading and following some precedures( like rgbtogray scale, scaling) 
         for image_name in image_list:
             image_path=path_to_look + "/"+folder+"/"+image_name
 
             #if we want to reshape the pict to only keep the face
             output= reshape(image_path,size,RGB)
 
+            # picture values are being scaled between 0-1
             output=output/255
+            
             # if(i<10):
             #     cv2.imshow('img', img)
             #     cv2.waitKey(0)
@@ -50,12 +65,15 @@ def import_processed_pict_from(path_to_look,size,RGB):
             #label=numpy.zeros(len(folder_list))
             #label[num_person]=1;
             y.append(label)
+
+        # For each person, pictures is being seperated related parts
         X_train.extend(X[:int(split_train * len(X))])
         X_val.extend(X[int(split_train * len(X)):int(split_val * len(X))])
         X_test.extend(X[int(split_val * len(X)):])
         y_train.extend(y[:int(split_train * len(y))])
         y_val.extend(y[int(split_train * len(y)):int(split_val * len(y))])
         y_test.extend(y[int(split_val * len(y)):])
+        
     return (X_train, y_train), (X_val, y_val), (X_test, y_test),name_list
 
 
