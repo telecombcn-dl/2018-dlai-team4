@@ -42,6 +42,8 @@ def import_processed_pict_from(path_to_look,size,RGB):
             image_path=path_to_look + "/"+folder+"/"+image_name
 
             #if we want to reshape the pict to only keep the face
+            # RGB 1 - colored scale   RGB 0- gray scale
+            # reshape is a function name, dont confuse numpy command
             output= reshape(image_path,size,RGB)
 
             # picture values are being scaled between 0-1
