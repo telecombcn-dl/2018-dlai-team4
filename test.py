@@ -2,11 +2,11 @@ from only_keep_good_files import create_new_parse
 from import_picture import import_processed_pict_from
 import os
 
-treshold = 150
-num_pict = [10]
+treshold = 20
+num_pict = [10, 12, 14, 16, 18, 20]
 
 for number in num_pict:
-    create_new_parse(treshold, number, True, True)
+    create_new_parse(treshold, number, False, False)
 #import_processed_pict_from(os.getcwd() + "/filtered_pict_20", 100, True)
 # from face_detection import reshape
 # import os
