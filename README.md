@@ -1,1 +1,5 @@
 # 2018-dlai-team4
+
+
+WE NEED TO DELETE THE "test.py" FILE BEFORE DELIVERING THE PROJECT
+AND THE "few_pict_for_test" FOLDER 

@@ -1,7 +1,13 @@
 from only_keep_good_files import create_new_parse
+from import_picture import import_processed_pict_from
+import os
 
-create_new_parse(10,10,True,False)
+treshold = 150
+num_pict = [10]
 
+for number in num_pict:
+    create_new_parse(treshold, number, True, True)
+#import_processed_pict_from(os.getcwd() + "/filtered_pict_20", 100, True)
 # from face_detection import reshape
 # import os
 # import cv2
