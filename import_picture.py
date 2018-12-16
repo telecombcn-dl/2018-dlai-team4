@@ -24,7 +24,7 @@ def extract_face(path, size, RGB):
         return roi_gray
 
 
-def import_processed_pict_from(path_to_look, size, RGB):
+def import_processed_pict_from(path_to_look, size, RGB = True, reshape=True, plot_pict=False):
     # Arranging percentage of train, validation and test data
     split_train = 0.6
     split_val = split_train + 0.2
@@ -58,8 +58,19 @@ def import_processed_pict_from(path_to_look, size, RGB):
 
             # if we want to reshape the pict to only keep the face
             # RGB 1 - colored scale   RGB 0- gray scale
-            # reshape is a function name, dont confuse numpy command
-            output = extract_face(image_path, size, RGB)
+            if reshape:
+                output = extract_face(image_path, size, RGB)
+            else :
+                output = img = cv2.imread(image_path)
+                if not RGB:
+                    output = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+            if plot_pict:
+                plot_pict = False
+                cv2.imshow('img',output)
+                cv2.waitKey(0)
+                cv2.destroyAllWindows()
+
 
             # picture values are being scaled between 0-1
             output = output/255
