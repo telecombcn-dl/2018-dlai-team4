@@ -7,30 +7,68 @@ We are employing a convolutional neural network structure due to its useulness f
 
 # Database 
 
-The database we are using is Labeled Face in the Wild (LFW) database, presented by MIT. The database presents us images that are collected from celebrities on the web. In practice, the database presents a different amount of images from person to person; in total we are working with 13233 images for 5740 people. 
+The database we are using is Labeled Face in the Wild (LFW) database, presented by MIT. The database presents us images that are collected from celebrities on the web. In practice, the database presents a different amount of images from person to person; in total we are working with 13233 images for 5740 people.  
+All the picture are yet processed in order to uniform the dimension of the images and the orientation of the faces.
 
 Link to the database: http://vis-www.cs.umass.edu/lfw/
 
 
 # Pre-processing 
 
-Before using the picture in our system we implemented some improvment on the data to increase the final accuracy and the computing speed of our system. 
+Before using the picture in our system we implemented some improvement on the data to increase the final accuracy and the computing speed of our system. 
 
 ## Size and reshape
 
-We first reduce the size of the image by only detecting the face using the Haar cascade method. This system allow us to remove all the unused background. And we reshape the imput image as uniform size 100*100 pixels.
+The first step is to reduce the database for two reasons : 
+* Increase the computing speed of training 
+* remove person's folder which have too low number of picture for training
 
-Before the Haar cascade method
+This give us two parameters to play with : 
+* The minimal number of picture each person should have (which act on the number of output class)
+* The number of pictures per person
 
-<p align="center"> 
-<img src="page_image/original_image.jpeg">
-</p>
+To found the best values of those we run two test only using balance database (same number of picture per person). 
 
-After the Haar cascade method
+### Optimal number of person (Classes)
 
-<p align="center"> 
-<img src="page_image/resize_image.jpeg">
-</p>
+For this test we use the same number of image per person and make the number of person (Classes) evolve from 
+5 to 30. This is the curve we obtain : 
+![optimize_preprocessing](page_image/optimal_number_classes.PNG)
+
+As we can see the accuracy increase until the maximal point then stabilize. This can be explain because a high number of 
+classes create a higher number of parameter to train. 
+
+### Optimal number of pictures per person (Sample per classes)
+For the part we reverse the variable and the constant. We pick 34 classes and change the number of picture per person from 
+10 to 30. This test give us the following classes : 
+![optimize_preprocessing](page_image/optimal_number_pictures.PNG)
+We can see as expected than the accuracy increase with the number of pictures increase the accuracy.
+
+## feature extraction
+
+This part as two main purpose : 
+* Decrease the number of parameter to train
+* Remove useless information from pictures (background)
+
+We first extract the face from the picture using the Haar cascade method. 
+This system allow us to remove all the unused background but provide different size output based on the original image characteristic.
+To get uniform input to our system we reshape all the image to 100x100pixel which is lower than all the possible size to 
+avoid oversampling. 
+
+We can also choose to use the pictures as Black and white pictures or keeping the RGB. This in fact didn't change the accuracy
+of our system because by reducing the number of parameter (Black & White) we also decrease the amount of information. The computing speed 
+is not really impacted by this changes. 
+
+This system give us the following result : 
+![optimize_preprocessing](page_image/original_image.jpeg)
+![optimize_preprocessing](page_image/resize_image.jpeg)
+
+## Best system 
+
+We've been looking for the optimal system for our network. We determine than choosing all the person which have more than
+20 pictures (63 classes) and 20 pictures for each was the best system to use for the development period because of a 
+high accuracy and a fast computing speed. But as final result we use an unbalanced dataset (same classes but a lot more
+picture per classes) which give us  the best accuracy even if we loose computing speed. 
 
 
 # The network structure
