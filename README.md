@@ -34,7 +34,6 @@ We propose two methods on Neural Network. In the first appoach, we creat our own
 >
 > When something is important enough, you do it even if the odds are not in your favor.
 
-### Header 3
 
 ## Transfer Learning
 In this section, we use the weights pretrained in VGG19 to train the network. Codes are in file transfer_learning.py .
@@ -46,7 +45,7 @@ Here we don't use the Data augmentation. And we reach the accuracy of 52.4%.
 ### Fine Tuning
 Based on the structure of Feature Extraction, we unfreeze the last block of VGG19 Network and we propose Data Augmentataion.
 
-# Result
+# Results
 For traning the Network, we use 20 images per class and totally 62 classes. In the CNN, before Data Augmentation we have the result of accuracy 48.8%. After Data Augmentation, the performance improves to 72.6%.
 With the appoach of Transfer Learning the accuracy reaches 52.4% after Feature Extractions and increases to 70.6% after Fine Tuning.
 Finally with the best weight we have obtain accuracy 85.1% for the unbalanced number of imput iamges.
@@ -63,7 +62,11 @@ We tried to implement Transfer Learning like Features Extraction and Fine-Tuning
 
 # Reference
 [1]. Keras documentation.  https://keras.io/
+
 [2].Face Detection using Haar Cascades. https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_objdetect/py_face_detection/py_face_detection.html
+
 [3]. Ian Goodfellow, Deep Learning.  http://www.deeplearningbook.org
+
 [4]. Data base http://vis-www.cs.umass.edu/lfw/
+
 [5]. Biometrics class in UPC
