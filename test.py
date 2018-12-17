@@ -2,12 +2,12 @@ from only_keep_good_files import create_new_parse
 from import_picture import import_processed_pict_from
 import os
 
-threshold_list = [100, 53, 43, 39, 35, 32, 29, 26, 24, 21, 20]
+threshold = 20
 num_pict = 20
 
-for threshold in threshold_list:
-    create_new_parse(threshold, num_pict, False, False)
-#import_processed_pict_from(os.getcwd() + "/filtered_pict_20", 100, True)
+#for threshold in threshold_list:
+create_new_parse(threshold, num_pict, everyone=False, all_picture_per_person=True)
+#import_processed_pict_from(os.getcwd() + "/filtered_pict_20", 100, RGB=True, reshape=True, plot_pict=True)
 # from face_detection import reshape
 # import os
 # import cv2

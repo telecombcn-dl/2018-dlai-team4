@@ -61,13 +61,13 @@ def import_processed_pict_from(path_to_look, size, RGB = True, reshape=True, plo
             if reshape:
                 output = extract_face(image_path, size, RGB)
             else :
-                output = img = cv2.imread(image_path)
+                output = cv2.imread(image_path)
                 if not RGB:
-                    output = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                    output = cv2.cvtColor(output, cv2.COLOR_BGR2GRAY)
 
             if plot_pict:
                 plot_pict = False
-                cv2.imshow('img',output)
+                cv2.imshow('img', output)
                 cv2.waitKey(0)
                 cv2.destroyAllWindows()
 

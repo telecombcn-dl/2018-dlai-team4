@@ -3,7 +3,7 @@ import os
 from shutil import copy
 
 
-def create_new_parse(threshold, number_of_pict, all_picture_per_person, everyone):
+def create_new_parse(threshold, number_of_pict, all_picture_per_person=False, everyone=False):
     # (int) threshold = the minimal number of picture the celebrity need to have
     # (int) number_of_pict = maximal number of picture kept for each celebrity (if less in databased take them all)
     # (boolean) all_picture_per_person = ignore the "number_of_pict" parameter and take all the available picture
