@@ -11,15 +11,10 @@ Original file is located at
 
 size_of_output=100                #square image so size_of_output*size_of_output
 #nomenclature : "filtered_pict_" + how to choose the people (number of picture each people should have at least) + number of pict kept for each person (at maximum)
-folder_to_use="filtered_pict_20"
-#folder_to_use="filtered_pict_10_every-picture" 
-#folder_to_use="filtered_pict_10_10" 
+folder_to_use="Optimized_folder"
 RGB_output=True
 run_preprocessing = True
 
-!git clone https://github.com/telecombcn-dl/2018-dlai-team4.git
-import os
-os.chdir("2018-dlai-team4")
 
 
 from import_picture import import_processed_pict_from
