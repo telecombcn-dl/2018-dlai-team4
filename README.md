@@ -98,6 +98,5 @@ The project took 8 weeks and we separated each part of the project to different 
 
 
 <p align="center"> 
-<img src="page_image/work_load.png">
+<img src="page_image/workload.PNG">
 </p>
-
