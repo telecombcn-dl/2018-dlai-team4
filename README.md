@@ -1,13 +1,24 @@
 # Introduction 
 
-this is the basic idea of our project and why we have done it 
-we could add some work repartition 
+The capabilities of the human may be insufficient in terms of understanding and comprehending events under some situations like limited memory. At this point, face recognition systems come out as a good tool to overwhelm these weak things of the human. We aren’t strange to the systems and we are so interacting with these type systems in daily life. We can face the systems in the surveillance, tracking, control etcetera.   Alright, why are the systems so important? Because, there are non-contact, detection from long distance, record and archive in the recognition process. 
+
+To form the system model, we are using convolutional neural network structure that is so useful to solve the image processing problem. 
+
+
+
 %to do and remove text bellow 
 
 WE NEED TO DELETE THE "test.py" FILE BEFORE DELIVERING THE PROJECT
 AND THE "few_pict_for_test" FOLDER 
 
 # Database 
+
+We need sample images to form system structure that has high accuracy rate. For that, Labeled Face in the Wild (LFW) database that is presented by MIT is being used in the network. The database presents us images that are collected from celebrity people on the web. Totally, the database includes image in different number for each person and totally, there are 13233 images for 5740 people. 
+
+The database link: http://vis-www.cs.umass.edu/lfw/
+
+
+
 
 x photos for y person with different number per person same size , color 
 
