@@ -2,7 +2,7 @@
 
 The capabilities of humans may be insufficient in terms of understanding and comprehending really complex events. Face recognition systems are as a good tool to overcome such limitations. We interact with such systems on a daily as in surveillance, tracking, control etcetera.  Why are these systems so important? Because they have high accuracy, do not require contact and are able to perform detection from high distances. 
 
-We are employing a convolutional neural network structure due to its useulness for image processing. 
+We are employing a convolutional neural network structure due to its usefulness for image processing. 
 
 
 # Database 
