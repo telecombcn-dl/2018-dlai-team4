@@ -1,15 +1,9 @@
 # Introduction 
 
-The capabilities of the human may be insufficient in terms of understanding and comprehending events under some situations like limited memory. At this point, face recognition systems come out as a good tool to overwhelm these weak things of the human. We aren’t strange to the systems and we are so interacting with these type systems in daily life. We can face the systems in the surveillance, tracking, control etcetera.   Alright, why are the systems so important? Because, there are non-contact, detection from long distance, record and archive in the recognition process. 
+The capabilities of the human may be insufficient in terms of understanding and comprehending events under some situations like limited memory. Face recognition systems are as a good tool to overcome such limitations. We interact with such systems on a daily as in surveillance, tracking, control etcetera.  Why are these systems so important? Because they have high accuracy, do not require contact and are able to perform detection from high distances. 
 
-To form the system model, we are using convolutional neural network structure that is so useful to solve the image processing problem. 
+We are employing a convolutional neural network structure due to its useulness for image processing. 
 
-
-
-%to do and remove text bellow 
-
-WE NEED TO DELETE THE "test.py" FILE BEFORE DELIVERING THE PROJECT
-AND THE "few_pict_for_test" FOLDER 
 
 # Database 
 
