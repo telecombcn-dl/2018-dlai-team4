@@ -7,18 +7,10 @@ We are employing a convolutional neural network structure due to its useulness f
 
 # Database 
 
-We need sample images to form system structure that has high accuracy rate. For that, Labeled Face in the Wild (LFW) database that is presented by MIT is being used in the network. The database presents us images that are collected from celebrity people on the web. Totally, the database includes image in different number for each person and totally, there are 13233 images for 5740 people. 
+The database we are using is Labeled Face in the Wild (LFW) database, presented by MIT. The database presents us images that are collected from celebrities on the web. In practice, the database presents a different amount of images from person to person; in total we are working with 13233 images for 5740 people. 
 
-The database link: http://vis-www.cs.umass.edu/lfw/
+Link to the database: http://vis-www.cs.umass.edu/lfw/
 
-
-
-
-x photos for y person with different number per person same size , color 
-
-link 
-
-if possible curve with the number of people depending on the number of picture or an array with the first person 
 
 # Pre-processing 
 
@@ -29,7 +21,7 @@ Before using the picture in our system we implemented some improvment on the dat
 We first reduce the size of the image by only detecting the face using the Haar cascade method. This system allow us to remove all the unused background. And we reshape the imput image as uniform size 100*100 pixels.
 
 
-## The network structure
+# The network structure
 ![CNN](page_image/CNN_structure.PNG)
 
 In order to get to the final structure of our network we started with a really basic CNN and proceeded adding layers and changing parameters in order to see what worked: in practice, if the accuracy improved after the change, we kept it, otherwise we just deleted it and went to check something else.
@@ -37,10 +29,10 @@ One of our attempts consisted on changing the size of the filters of the convolu
 Another attempt concerned the final part of the network; we tried to append in the end one or two dense layers but again we did not see any improvement, which is why we decided to keep them out.
 The optimizer we employed was a quite standard Stochastic Gradient Descent, with a learning rate of 0.01, a decay for the rate of 10^-6 and Nesterov’s accelerated momentum with a parameter of 0.9. This was used for all our simulations (with the exception of some of the starting ones where we used for a bit an SGD(0.1)).
 The maximum amount of epochs was set to 500 but such value was never reached as we were employing early stopping (with a value of patience equal to 20).
-### Data Augmentation
+## Data Augmentation
 Moreover, as the amount of data at our disposal was pretty small, we used data augmentation to boost the performance. We tested various parameters to see what helped and for each of the useful ones we looked for the best values. In practice we used horizontal_flip, zoom, width_shift_range and zoom_range, the actual values are of course on the code.
 
-### Training
+## Settings for the training
 For the actual training on the augmented data we used a batch size of 128, and tuned the steps per epochs in order to get 4 times the original data; the validation steps per epoch were set to 50 and shuffle was enabled.
 
 
@@ -48,39 +40,33 @@ For the actual training on the augmented data we used a batch size of 128, and t
 
 
 
+# Training approaches
+The training is done in two phases. At first, we use the CNN we built and observe its performance using different datasets, and also check the impact of data augmentation on the whole. Then, we use Transfer Learning trying to improve our results. The loaded model is VGG19 and we use it first just for Feature Extraction and then to apply Fine Tuning.
 
-We propose two methods on Neural Network. In the first appoach, we creat our own Convolutional Neural Network and compare the performance before and after Data Augmentation. In the other appoach, we use the Transfer Learning method. We first implement the Feature Extration and then we use also Fine Tuning to improve the performance.
-
-## Convolutional Neural Network
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
 
 
 ## Transfer Learning
-In this section, we use the weights pretrained in VGG19 to train the network. Codes are in file transfer_learning.py .
+In this section, we use the weights pretrained in VGG19 to train the network; we do not import its 'head'. Codes are in file transfer_learning.py .
 
 ### Feature Extraction
 We use the weights in the pretrained VGG19 and feed them to the Dense layer we decide.
-Here we don't use the Data augmentation. And we reach the accuracy of 52.4%. 
+Here we don't use the Data augmentation. And we reach an accuracy of 52.4%. 
 
 ### Fine Tuning
-Based on the structure of Feature Extraction, we unfreeze the last block of VGG19 Network and we propose Data Augmentataion.
+We start from the structure of Feature Extraction, we unfreeze the last block of VGG19 Network (a total of 4 convolutional layers) and we apply Data Augmentation.
 
 # Results
-For traning the Network, we use 20 images per class and totally 62 classes. In the CNN, before Data Augmentation we have the result of accuracy 48.8%. After Data Augmentation, the performance improves to 72.6%.
-With the appoach of Transfer Learning the accuracy reaches 52.4% after Feature Extractions and increases to 70.6% after Fine Tuning.
-Finally with the best weight we have obtain accuracy 85.1% for the unbalanced number of imput iamges.
+For traning the Network, we use 20 images per class and totally 62 classes. In the CNN, before Data Augmentation we have an accuracy of 48.8%. After Data Augmentation, the performance improves to 72.6%.
+Using Transfer Learning the accuracy reaches a value of 52.4% using Feature Extractions and increases to 70.6% with Fine Tuning.
+Finally with the best weights we obtained an accuracy of 85.1% for the unbalanced number of imput images (which means using all the images of the people with at least 20 images).
 
 # Conclusions
-## Pre-processing
-Create sub-database with a reduced number of people and a balanced number of pictures.
-Remove all the useless information of the image and reshape for uniform input.
 
-## Deep Neural Network
-Regularizations like Early stopping and Dropout layer prevent overfitting.
-Dataset Augmentation improve the network performance.
+We created a sub-database with a reduced number of people and a balanced number of pictures.
+We removed some useless information from the images and reshaped them in order to get a uniform input.
+We built CNN and tuned most of its parameters.
+Early stopping, L2 regularization and dropout were all used to prevent overfitting.
+Dataset Augmentation improved the network performance.
 We tried to implement Transfer Learning like Features Extraction and Fine-Tuning, but we did not manage to improve the performance.
 
 # Reference
