@@ -81,7 +81,7 @@ This system give us the following result :
 ## Best system 
 
 We've been looking for the optimal system for our network. We determine than choosing all the person which have more than
-20 pictures (63 classes) and 20 pictures for each was the best system to use for the development period because of a 
+20 pictures (62 classes) and 20 pictures for each was the best system to use for the development period because of a 
 high accuracy and a fast computing speed. But as final result we use an unbalanced dataset (same classes but a lot more
 picture per classes) which give us  the best accuracy even if we loose computing speed. 
 
