@@ -33,6 +33,7 @@ To found the best values of those we run two test only using balance database (s
 
 For this test we use the same number of image per person and make the number of person (Classes) evolve from 
 5 to 30. This is the curve we obtain : 
+
 ![optimize_preprocessing](page_image/optimal_number_classes.PNG)
 
 As we can see the accuracy increase until the maximal point then stabilize. This can be explain because a high number of 
@@ -41,7 +42,9 @@ classes create a higher number of parameter to train.
 ### Optimal number of pictures per person (Sample per classes)
 For the part we reverse the variable and the constant. We pick 34 classes and change the number of picture per person from 
 10 to 30. This test give us the following classes : 
+
 ![optimize_preprocessing](page_image/optimal_number_pictures.PNG)
+
 We can see as expected than the accuracy increase with the number of pictures increase the accuracy.
 
 ## feature extraction
@@ -59,11 +62,17 @@ We can also choose to use the pictures as Black and white pictures or keeping th
 of our system because by reducing the number of parameter (Black & White) we also decrease the amount of information. The computing speed 
 is not really impacted by this changes. 
 
+
+For this original image from the database : 
+<p align="center"> 
+<img src="page_image/original_image.jpeg">
+</p>
+
 This system give us the following result : 
 
-![optimize_preprocessing](page_image/original_image.jpeg)
-
-![optimize_preprocessing](page_image/resize_image.jpeg)
+<p align="center"> 
+<img src="page_image/resize_image.jpeg">
+</p>
 
 ## Best system 
 
