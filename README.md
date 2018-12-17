@@ -35,7 +35,25 @@ Before using the picture in our system we implemented some improvment on the dat
 We first reduce the size of the image by only detecting the face using the Haar cascade method. This system allow us to remove all the unused background. And we reshape the imput image as uniform size 100*100 pixels.
 
 
-# Network structure
+## The network structure
+![CNN](page_image/CNN_structure.PNG)
+
+In order to get to the final structure of our network we started with a really basic CNN and proceeded adding layers and changing parameters in order to see what worked: in practice, if the accuracy improved after the change, we kept it, otherwise we just deleted it and went to check something else.
+One of our attempts consisted on changing the size of the filters of the convolutional layers (we tried windows of size (5,5), (7,7) and (9,9)) but the results were not promising at all, so we decided to keep the minimum size (3,3).
+Another attempt concerned the final part of the network; we tried to append in the end one or two dense layers but again we did not see any improvement, which is why we decided to keep them out.
+The optimizer we employed was a quite standard Stochastic Gradient Descent, with a learning rate of 0.01, a decay for the rate of 10^-6 and Nesterov’s accelerated momentum with a parameter of 0.9. This was used for all our simulations (with the exception of some of the starting ones where we used for a bit an SGD(0.1)).
+The maximum amount of epochs was set to 500 but such value was never reached as we were employing early stopping (with a value of patience equal to 20).
+#Data Augmentation
+Moreover, as the amount of data at our disposal was pretty small, we used data augmentation to boost the performance. We tested various parameters to see what helped and for each of the useful ones we looked for the best values. In practice we used horizontal_flip, zoom, width_shift_range and zoom_range, the actual values are of course on the code.
+
+#Training
+For the actual training on the augmented data we used a batch size of 128, and tuned the steps per epochs in order to get 4 times the original data; the validation steps per epoch were set to 50 and shuffle was enabled.
+
+
+
+
+
+
 
 We propose two methods on Neural Network. In the first appoach, we creat our own Convolutional Neural Network and compare the performance before and after Data Augmentation. In the other appoach, we use the Transfer Learning method. We first implement the Feature Extration and then we use also Fine Tuning to improve the performance.
 
