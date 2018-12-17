@@ -15,7 +15,7 @@ link
 
 if possible curve with the number of people depending on the number of picture or an array with the first person 
 
-![Octocat](https://2018-dlai-team4.github.com/page_image/original_image.jpeg)  //example 
+![original image](https://github.com/telecombcn-dl/2018-dlai-team4/page_image/original_image.jpeg)  //example 
 
 # Pre-processing 
 
