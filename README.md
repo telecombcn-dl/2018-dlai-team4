@@ -21,7 +21,7 @@ Before using the picture in our system we implemented some improvment on the dat
 
 ## Size and reshape
 
-We first reduce the size of the image by only detecting the face using the Haar cascade method. This system allow us to remove all the unused 
+We first reduce the size of the image by only detecting the face using the Haar cascade method. This system allow us to remove all the unused information contained in the background and also to reduce the number of parameter to train. 
 
 
 # Header 1
