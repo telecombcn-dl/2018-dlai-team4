@@ -79,3 +79,10 @@ We tried to implement Transfer Learning like Features Extraction and Fine-Tuning
 [4]. Data base http://vis-www.cs.umass.edu/lfw/
 
 [5]. Biometrics class in UPC
+
+# Workload
+
+The project took 8 weeks and we separated each part of the project to different time gaps. Also, there is a workload distribution among team members. The related schedule is represented as follows:
+
+![capture](https://user-images.githubusercontent.com/43941831/50086072-3e4b0100-01fc-11e9-9525-7a4489e5637a.PNG)
+
