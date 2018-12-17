@@ -60,7 +60,9 @@ of our system because by reducing the number of parameter (Black & White) we als
 is not really impacted by this changes. 
 
 This system give us the following result : 
+
 ![optimize_preprocessing](page_image/original_image.jpeg)
+
 ![optimize_preprocessing](page_image/resize_image.jpeg)
 
 ## Best system 
