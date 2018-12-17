@@ -34,7 +34,9 @@ To found the best values of those we run two test only using balance database (s
 For this test we use the same number of image per person and make the number of person (Classes) evolve from 
 5 to 30. This is the curve we obtain : 
 
-![optimize_preprocessing](page_image/optimal_number_classes.PNG)
+<p align="center"> 
+<img src="page_image/optimal_number_classes.PNG">
+</p>
 
 As we can see the accuracy increase until the maximal point then stabilize. This can be explain because a high number of 
 classes create a higher number of parameter to train. 
@@ -43,7 +45,9 @@ classes create a higher number of parameter to train.
 For the part we reverse the variable and the constant. We pick 34 classes and change the number of picture per person from 
 10 to 30. This test give us the following classes : 
 
-![optimize_preprocessing](page_image/optimal_number_pictures.PNG)
+<p align="center"> 
+<img src="page_image/optimal_number_pictures.PNG">
+</p>
 
 We can see as expected than the accuracy increase with the number of pictures increase the accuracy.
 
