@@ -51,7 +51,7 @@ For the part we reverse the variable and the constant. We pick 34 classes and ch
 
 We can see as expected than the accuracy increase with the number of pictures increase the accuracy.
 
-## feature extraction
+## Feature extraction
 
 This part as two main purpose : 
 * Decrease the number of parameter to train
