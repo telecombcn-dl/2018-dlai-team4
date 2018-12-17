@@ -8,8 +8,7 @@ Original file is located at
 """
 
 size_of_output=100                #square image so size_of_output*size_of_output
-#nomenclature : "filtered_pict_" + how to choose the people (number of picture each people should have at least) + number of pict kept for each person (at maximum)
-folder_to_use="Optimized_folder"
+folder_to_use="optimised_for_speed"
 RGB_output=True
 run_preprocessing = True
 
