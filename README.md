@@ -20,6 +20,18 @@ Before using the picture in our system we implemented some improvment on the dat
 
 We first reduce the size of the image by only detecting the face using the Haar cascade method. This system allow us to remove all the unused background. And we reshape the imput image as uniform size 100*100 pixels.
 
+Before the Haar cascade method
+
+<p align="center"> 
+<img src="page_image/original_image.jpeg">
+</p>
+
+After the Haar cascade method
+
+<p align="center"> 
+<img src="page_image/resize_image.jpeg">
+</p>
+
 
 # The network structure
 ![CNN](page_image/CNN_structure.PNG)
@@ -84,5 +96,8 @@ We tried to implement Transfer Learning like Features Extraction and Fine-Tuning
 
 The project took 8 weeks and we separated each part of the project to different time gaps. Also, there is a workload distribution among team members. The related schedule is represented as follows:
 
-![capture](https://user-images.githubusercontent.com/43941831/50086072-3e4b0100-01fc-11e9-9525-7a4489e5637a.PNG)
+
+<p align="center"> 
+<img src="page_image/work_load.png">
+</p>
 
