@@ -1,7 +1,3 @@
----
-layout: default
----
-
 # Introduction 
 
 this is the basic idea of our project and why we have done it 
@@ -14,13 +10,20 @@ AND THE "few_pict_for_test" FOLDER
 # Database 
 
 x photos for y person with different number per person same size , color 
+
 link 
+
 if possible curve with the number of people depending on the number of picture or an array with the first person 
-![Octocat](https://assets-cdn.github.com/images/icons/emoji/octocat.png)  //example 
+
+![Octocat](https://2018-dlai-team4.github.com/page_image/original_image.jpeg)  //example 
 
 # Pre-processing 
 
-Before using the picture in our 
+Before using the picture in our system we implemented some improvment on the data to increase the final accuracy and the computing speed of our system. 
+
+## Size and reshape
+
+We first reduce the size of the image by only detecting the face using the Haar cascade method. This system allow us to remove all the unused 
 
 
 # Header 1
