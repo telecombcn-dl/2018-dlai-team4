@@ -15,8 +15,6 @@ link
 
 if possible curve with the number of people depending on the number of picture or an array with the first person 
 
-![original image](https://github.com/telecombcn-dl/2018-dlai-team4/page_image/original_image.jpeg)  //example 
-
 # Pre-processing 
 
 Before using the picture in our system we implemented some improvment on the data to increase the final accuracy and the computing speed of our system. 
