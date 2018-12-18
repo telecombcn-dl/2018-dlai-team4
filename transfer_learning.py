@@ -1,25 +1,27 @@
-# -*- coding: utf-8 -*-
-"""Transfer_learning
 
-Original file is located at
-    https://colab.research.google.com/drive/1w07uOcZ-kumujcxsTmI5A5_UhWGaGC8n
+#Original file is located at
+#https://colab.research.google.com/drive/1w07uOcZ-kumujcxsTmI5A5_UhWGaGC8n
+
+import os
+import numpy as np
+from import_picture import import_processed_pict_from
+from keras import models
+from keras import layers
+from keras import optimizers
+from keras.utils import to_categorical
+from keras.applications import VGG19
+from keras.callbacks import EarlyStopping, ModelCheckpoint
+from keras.preprocessing.image import ImageDataGenerator
 
 # Import data from github
-"""
 
-size_of_output=100                #square image so size_of_output*size_of_output
+size_of_output=100                   #square image so size_of_output*size_of_output
 folder_to_use="optimised_for_speed"
 RGB_output=True
 run_preprocessing = True
 
-
-
-from import_picture import import_processed_pict_from
-
-
 (x_train, y_train), (x_val, y_val), (x_test, y_test),name_list=import_processed_pict_from(folder_to_use)
 
-import numpy as np
 x_train=np.asarray(x_train)
 x_test=np.asarray(x_test)
 x_val=np.asarray(x_val)
@@ -28,7 +30,6 @@ if not RGB_output:
   x_test=x_test.reshape(len(x_test),size_of_output,size_of_output,1)
   x_val=x_val.reshape(len(x_val),size_of_output,size_of_output,1)
 
-from keras.utils import to_categorical
 y_train = to_categorical(y_train)
 y_val = to_categorical(y_val)
 y_test = to_categorical(y_test)
@@ -43,16 +44,12 @@ y_train = y_train[ind]
 ########################################
 
 #Use VGG19 as pretrain network.
-from keras.applications import VGG19
 
 conv_base = VGG19(weights='imagenet',
                   include_top=False,
                   input_shape=(100, 100, 3))
 
-#resize the training, validation and test data to fit the output of pre-trained network.
-import os
-import numpy as np
-from keras.preprocessing.image import ImageDataGenerator
+# resize the training, validation and test data to fit the output of pre-trained network.
 
 datagen = ImageDataGenerator()
 batch_size = 16
@@ -84,16 +81,11 @@ validation_features = np.reshape(validation_features, (len(y_val), 3 * 3 * 512))
 test_features = np.reshape(test_features, (len(y_val), 3 * 3 * 512))
 
 # use early stoping
-from keras.callbacks import EarlyStopping, ModelCheckpoint
 
 callback = [EarlyStopping(monitor='val_acc', patience=15),
              ModelCheckpoint(filepath='best_model.h5', monitor='val_acc', save_best_only=True)]
 
 # Add Dense layers and train the model
-
-from keras import models
-from keras import layers
-from keras import optimizers
 
 model = models.Sequential()
 model.add(layers.Dense(512, activation='relu', input_dim=3 * 3 * 512))
@@ -120,7 +112,9 @@ print("Accuracy = " + str(test_acc))
 ###################################
 # Transfer Learning - Fine Tuning #
 ###################################
+
 # Unfreeze the 5th Block
+
 conv_base.trainable = True
 
 set_trainable = False
@@ -135,9 +129,6 @@ for layer in conv_base.layers:
 
 # Define the Dense layers
 
-from keras import models
-from keras import layers
-
 model = models.Sequential()
 model.add(conv_base)
 model.add(layers.Flatten())
@@ -150,7 +141,6 @@ model.summary()
 
 # Add data augmentation
 
-from keras.preprocessing.image import ImageDataGenerator
 datagen = ImageDataGenerator(
     rotation_range = 15,       #useful (smaller than 20 seems better)
     width_shift_range = 0.1,   #useful for small values
@@ -160,14 +150,11 @@ datagen = ImageDataGenerator(
 
 # Early stopping
 
-from keras.callbacks import EarlyStopping, ModelCheckpoint
-
 callback = [EarlyStopping(monitor='val_acc', patience=15),
              ModelCheckpoint(filepath='best_model.h5', monitor='val_acc', save_best_only=True)]
 
 # Build and train the network
 
-from keras import optimizers
 model.compile(optimizer=optimizers.RMSprop(lr=2e-5),
               loss='categorical_crossentropy',
               metrics=['acc'])
