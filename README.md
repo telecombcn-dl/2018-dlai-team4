@@ -23,22 +23,22 @@ Folder containing all the pictures from the database, never used for train the n
 ### "optimised_for_accuracy"
 
 This folder is the optimal sub-database we found for obtaining the highest accuracy. 
-The sub-database is obtained by keeping all the pictures for people who hae more than 20 pictures. 
-This sub-database contain 62 classes and more than 3000 sample in total. 
+The sub-database is obtained by keeping all the pictures for people who have more than 20 pictures. 
+This sub-database contains 62 classes and more than 3000 samples in total. 
 
 
 ### "optimised_for_speed"
 
 This folder is the optimal sub-database we found for obtaining a good accuracy and have a reasonable training time. 
-This sub-database is obtained by keepeing the same classes but for all classes we keep 20 pictures. We have a total of 1240 
+This sub-database is obtained by keeping the same classes but for all classes, we keep 20 pictures. We have a total of 1240 
 pictures in this sub-database.
 
 ## Pre-processing script 
 
 ### "ordered_names.xlsx"
 
-Files containing the number of pictures associated to all the people in a decreasing order. This file is used during the
-creation of sub-datase
+Files containing the number of pictures associated with all the people in decreasing order. This file is used during the
+creation of sub-dataset
 
 ### "haarcascade_frontalface_default.xml"
 
@@ -54,7 +54,7 @@ import_processed_pict_from(path_to_look, size, RGB = True, reshape=True, plot_pi
 
 "path_to_look" : database used for the system
 
-"size" : define the normalised size of the image after face extraction. Recommended under 100 to avoid extrapolation. 
+"size" : define the normalized size of the image after face extraction. Recommended under 100 to avoid extrapolation. 
 
 "RGB" : use to determine if the picture sent to the network is colored (True) or black & white (False)
 
