@@ -85,7 +85,7 @@ all the picture
 ### "main.py"
 
 This file contains the main network we used. Using this network and the "optimised_for_accuracy" sub-database.
-We can reach a test accuracy equal to 85%
+We can reach a test accuracy equal to 85%.
 
 ### "transfer_learning.py"
 
@@ -100,3 +100,18 @@ This file contains the network we implemented using transfer learning from "VGG1
 You can find more explanation about our project on our github page : 
 
 https://telecombcn-dl.github.io/2018-dlai-team4/
+
+## Colab notebook 
+
+If you want to use our google colab to run the script : 
+https://colab.research.google.com/drive/1eqZE2md_MkwbpPLum0aCG0P6oQgTMU0b
+
+The first part is use to import existing sub-database or creating a new one. 
+
+The second give access to our network without transfer learning. Two versions are available :
+* with data-augmentation : run the two blocks under the "data augmentation" text block
+* without data-augmentation : runt the block under the "Training without data augmentation" text block
+
+The third part use a pre-trained network apply to our system. 
+
+The last one use fine tunning on the pre-trained system to adapt it to our data. 
