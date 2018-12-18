@@ -29,10 +29,6 @@ run_preprocessing = True
 x_train=np.asarray(x_train)
 x_test=np.asarray(x_test)
 x_val=np.asarray(x_val)
-if not RGB_output: 
-  x_train=x_train.reshape(len(x_train),size_of_output,size_of_output,1)
-  x_test=x_test.reshape(len(x_test),size_of_output,size_of_output,1)
-  x_val=x_val.reshape(len(x_val),size_of_output,size_of_output,1)
 
 y_train = to_categorical(y_train)
 y_val = to_categorical(y_val)
