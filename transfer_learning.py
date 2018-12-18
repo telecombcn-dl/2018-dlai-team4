@@ -38,23 +38,21 @@ np.random.shuffle(ind)
 x_train = x_train[ind]
 y_train = y_train[ind]
 
-"""# **Transfer Learning - Feature extraction**
+########################################
+#Transfer Learning - Feature extraction#
+########################################
 
-Use VGG19 as pretrain network.
-"""
-
+#Use VGG19 as pretrain network.
 from keras.applications import VGG19
 
 conv_base = VGG19(weights='imagenet',
                   include_top=False,
                   input_shape=(100, 100, 3))
 
-"""resize the training, validation and test data to fit the output of pre-trained network."""
-
+#resize the training, validation and test data to fit the output of pre-trained network.
 import os
 import numpy as np
 from keras.preprocessing.image import ImageDataGenerator
-
 
 datagen = ImageDataGenerator()
 batch_size = 16
@@ -80,20 +78,18 @@ train_features, train_labels = extract_features(x_train, y_train, len(y_train))
 validation_features, validation_labels = extract_features(x_val, y_val, len(y_val))
 test_features, test_labels = extract_features(x_test, y_test, len(y_test))
 
-"""Flatten the features"""
-
+# Flatten the features
 train_features = np.reshape(train_features, (len(y_train), 3 * 3 * 512))
 validation_features = np.reshape(validation_features, (len(y_val), 3 * 3 * 512))
 test_features = np.reshape(test_features, (len(y_val), 3 * 3 * 512))
 
+# use early stoping
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 
-
-#Many other options for the early stopping are available. In my opinion this should be enough for our purposes
 callback = [EarlyStopping(monitor='val_acc', patience=15),
              ModelCheckpoint(filepath='best_model.h5', monitor='val_acc', save_best_only=True)]
 
-"""Add Dense layers and train the model"""
+# Add Dense layers and train the model
 
 from keras import models
 from keras import layers
@@ -117,16 +113,14 @@ history = model.fit(train_features, train_labels,
 
 model.load_weights('best_model.h5')
 
-"""test the model"""
-
+# Test the model
 test_loss, test_acc = model.evaluate(test_features, test_labels)
 print("Accuracy = " + str(test_acc))
 
-"""# **Transfer Learning - Fine Tuning**
-
-Unfreeze the 5th Block
-"""
-
+###################################
+# Transfer Learning - Fine Tuning #
+###################################
+# Unfreeze the 5th Block
 conv_base.trainable = True
 
 set_trainable = False
@@ -139,7 +133,7 @@ for layer in conv_base.layers:
     else:
         layer.trainable = False
 
-"""Define the Dense layers"""
+# Define the Dense layers
 
 from keras import models
 from keras import layers
@@ -154,30 +148,24 @@ model.add(layers.Dense(62, activation='softmax'))
 
 model.summary()
 
-"""Add data augmentation"""
+# Add data augmentation
 
 from keras.preprocessing.image import ImageDataGenerator
 datagen = ImageDataGenerator(
-    #rotation_range = 15,       #useful (smaller than 20 seems better)
+    rotation_range = 15,       #useful (smaller than 20 seems better)
     width_shift_range = 0.1,   #useful for small values
-    #height_shift_range = 0.1, #not useful
-    #shear_range = 0.1,        #not useful
     zoom_range = 0.2,         #useful
     horizontal_flip = True,   #useful
-    #vertical_flip = True
-    #fill_mode = 'nearest'
     )
 
-"""Early stopping"""
+# Early stopping
 
 from keras.callbacks import EarlyStopping, ModelCheckpoint
 
-
-#Many other options for the early stopping are available. In my opinion this should be enough for our purposes
 callback = [EarlyStopping(monitor='val_acc', patience=15),
              ModelCheckpoint(filepath='best_model.h5', monitor='val_acc', save_best_only=True)]
 
-"""Build and train the network"""
+# Build and train the network
 
 from keras import optimizers
 model.compile(optimizer=optimizers.RMSprop(lr=2e-5),
@@ -195,5 +183,6 @@ history = model.fit_generator(datagen.flow(x_train, y_train ,batch_size = 16,shu
 
 model.load_weights('best_model.h5')
 
+# test 
 test_loss, test_acc = model.evaluate(x_test, y_test)
 print(test_acc)
