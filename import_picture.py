@@ -24,7 +24,7 @@ def extract_face(path, size, RGB):
         return roi_gray
 
 
-def import_processed_pict_from(path_to_look, size, RGB = True, reshape=True, plot_pict=False):
+def import_processed_pict_from(path_to_look, size=100, RGB = True, reshape=True, plot_pict=False):
     # Arranging percentage of train, validation and test data
     split_train = 0.6
     split_val = split_train + 0.2

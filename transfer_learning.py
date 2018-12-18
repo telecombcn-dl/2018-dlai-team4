@@ -17,7 +17,7 @@ run_preprocessing = True
 from import_picture import import_processed_pict_from
 
 
-(x_train, y_train), (x_val, y_val), (x_test, y_test),name_list=import_processed_pict_from(folder_to_use,size_of_output,RGB_output)
+(x_train, y_train), (x_val, y_val), (x_test, y_test),name_list=import_processed_pict_from(folder_to_use)
 
 import numpy as np
 x_train=np.asarray(x_train)
